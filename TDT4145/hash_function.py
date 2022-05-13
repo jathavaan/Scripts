@@ -4,21 +4,18 @@ num_list = []
 hashed_list = []
 binary = []
 
-num_count = int(input("Amount of numbers: "))
 mod = int(input("The mod number: "))
+num_string = input("Type in your numbers with a space between each number: ")
 
-iteration = 1
+num_list = list(map(lambda num: int(num), num_string.split(" ")))
 
 print(f"Your hash function is: h(k)=k mod {mod}\n")
 
-for i in range(num_count):
-    num = int(input(f"{iteration}. Write your number: "))
-    num_list.append(num)
+for i in range(len(num_list)):
+    num = num_list[i]
     hashed_num = num % mod
     hashed_list.append(hashed_num)
     binary.append(bin(hashed_num))
-
-    iteration += 1
 
 table = PrettyTable()
 table.field_names = ["Start number", "Hashed number", "Binary"]
